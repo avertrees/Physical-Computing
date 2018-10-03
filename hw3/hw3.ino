@@ -14,52 +14,47 @@
 int sensorPinR = A0;    // select the input pin for the first potentiometer
 int sensorPinG = A1;    // select the input pin for the second potentiometer
 int sensorPinB = A2;    // select the input pin for the third  potentiometer
-int sensorPinI = A3;    // select the input pin for the fourth potentiometer
+//ledPins
+int ledRed = 9;         //red pin
+int ledGreen = 10;      //green pin
+int ledBlue = 11;       // blue pin
 
-//LED Pins
-int ledDigitalOne[] = {9, 10, 11}; //Array of RGB LED pins
- 
 //potentiometers
 int sensorValueR = 0;  // variable to store the value coming from the sensor
 int sensorValueG = 0;  // variable to store the value coming from the sensor
 int sensorValueB = 0;  // variable to store the value coming from the sensor
-int sensorValueI = 0;  // variable to store the value coming from the sensor
 
 void setup() {
   // declare the ledPin as an OUTPUT:
-  for(int i = 0; i < 3; i++){
-    //  set the 3 pins as outputs
-    pinMode(ledDigitalOne[i], OUTPUT);
-  }
+  pinMode(ledRed, OUTPUT);
+  pinMode(ledGreen, OUTPUT);
+  pinMode(ledBlue, OUTPUT);
+  
   Serial.begin(9600);
 }
 
 void loop() {
   // read the value from the sensor:
-  sensorPinR=sensorPinR/4;
-  sensorPinG=sensorPinG/4;
-  sensorPinB=sensorPinB/4;
-  sensorValueR = analogRead(sensorPinR);
-  sensorValueG = analogRead(sensorPinG);
-  sensorValueB = analogRead(sensorPinB);
-//  sensorValueI = analogRead(sensorPinI);
-  
-//  setColor(ledDigitalOne, sensorValueR, sensorValueG, sensorValueB);
-  //Serial.println("red: ", sensorValueR, " green: ", sensorValueG, " blue: ", sensorValueB);
+  sensorValueR = analogRead(sensorPinR)/4;  //range of pot. is 0-1023, 
+  sensorValueG = analogRead(sensorPinG)/4;  //in order to get a range from 0-255
+  sensorValueB = analogRead(sensorPinB)/4;  //I divided the raw sensor data by 4
+ 
+  // turn the ledPin on
+  analogWrite(ledRed, sensorValueR);        //set color value to sensor value
+  analogWrite(ledGreen, sensorValueG);      //set color value to sensor value
+  analogWrite(ledBlue, sensorValueB);       //set color value to sensor value
+  delay(1000);
+
+  //print values
   Serial.print("Red: ");
   Serial.println(sensorValueR);
   Serial.print("Green: ");
   Serial.println(sensorValueG);
   Serial.print("Blue: ");
   Serial.println(sensorValueB);
-  Serial.print("I: ");
-  Serial.println(sensorValueI);
   Serial.print(" ");
-  delay(100);
-  
-  // turn the ledPin on
-  analogWrite(ledDigitalOne[0], sensorValueR);
-  analogWrite(ledDigitalOne[1], sensorValueG);
-  analogWrite(ledDigitalOne[2], sensorValueB);
-  //delay(sensorValueI);
+
 }
+
+
+
