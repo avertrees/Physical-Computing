@@ -1,15 +1,6 @@
-/*     ---------------------------------------------------------
- *     |  Arduino Experimentation Kit Example Code             |
- *     |  CIRC-05 .: 8 More LEDs :. (74HC595 Shift Register)   |
- *     ---------------------------------------------------------
- * 
- * We have already controlled 8 LEDs however this does it in a slightly
- * different manner. Rather than using 8 pins we will use just three
- * and an additional chip.
- *
- *
- */
-
+/*
+HW 4 by Alessandra Vertrees - Serial Communcation
+*/
 
 //Pin Definitions
 //Pin Definitions
@@ -47,17 +38,7 @@ void loop()                     // run over and over again
    changeLED(i+1, ON);
    delay(delayTime);
    changeLED(i, OFF); 
-   //changeLED(i+1, OFF); 
-   //delay(delayTime);
   }
-  
-  //updateLEDsLong(i);
-  /*for(int i = 0; i < 8; i++){
-   changeLED(i, OFF);
-   changeLED(i-1, OFF);
-   delay(delayTime); 
-  }
-  */
 
   //Turn LEDs back on in reverse order
   for(int i = 7; i >= 0; i--){
@@ -65,21 +46,23 @@ void loop()                     // run over and over again
    changeLED(i, ON);
    delay(delayTime); 
    changeLED(i,OFF);
-   //changeLED(i-1, OFF);
-   //delay(delayTime);
   }
+
+  //other code from before
   /*for(int i = 7; i >= 0; i--){
    changeLED(i, OFF);
    changeLED(i+1, ON);
    delay(delayTime); 
   }*/
   
-  
-
-
 }
 
 
+
+
+/*
+ * Code from Adafruit Tutorial
+ */
 
 /*
  * updateLEDs() - sends the LED states set in ledStates to the 74HC595
