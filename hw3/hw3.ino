@@ -6,7 +6,7 @@
  the value obtained by analogRead().
 
  The circuit:
- * 4 Potentiometers attached to analog input 0, 1, 2, and 3
+ * 3 Potentiometers attached to analog input 0, 1, 2, and 3
  * center pin of the potentiometer to the analog pins
  * one RGB LED connected to pins 9-11 
  */
