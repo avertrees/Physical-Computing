@@ -26,7 +26,7 @@ Adafruit_BME280 bme; // I2C
 //global temp variables
 float minTemp, tempCelc, tempFar;
 
-//LED VARAIBLES
+//LED VARIABLES
 
 //Used for single LED manipulation, could be used instead of HIGH/LOW
 //int ledState = 0;
